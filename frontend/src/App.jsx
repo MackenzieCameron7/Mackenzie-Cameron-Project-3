@@ -1,15 +1,19 @@
 import "./App.css";
+import CreateUser from "./pages/CreateUser";
 import GroceriesApp from "./pages/GroceriesApp";
-import { BowserRouter, Route, Routes } from "react-router-dom"
+import LoginUser from "./pages/LoginUser";
+import { BrowserRouter, Route, Routes } from "react-router-dom"
 
 function App() {
   return (
     <>
-      <BowserRouter>
+      <BrowserRouter>
         <Routes>
-          <Route path="/main" element={<GroceriesApp />}/>
+          <Route path="/" element={<LoginUser /> } />
+          <Route path="/main" element={<GroceriesApp /> } />
+          <Route path="/create-user" element={<CreateUser /> } />
         </Routes>
-      </BowserRouter>  
+      </BrowserRouter>  
     </>
   );
 }
