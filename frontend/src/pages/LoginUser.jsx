@@ -1,6 +1,6 @@
 import axios from "axios"
 import { useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, Link} from "react-router-dom"
 import Cookies from "js-cookie"
 
 
@@ -45,7 +45,11 @@ export default function LoginUser(){
             if(response.data.message == "Successful Login"){
                 createCookie(response.data.token)
                 setJwtCookie(jwtCookie)
-            }})
+            }
+            if(response.data.message == "Username does not exist"){
+                <Link to='/create-user'><p>Create an Account</p></Link>
+            }
+        })
         .then(setFormData({
             username:"",
             password:"",

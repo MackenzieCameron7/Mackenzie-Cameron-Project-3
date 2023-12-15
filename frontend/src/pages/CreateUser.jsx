@@ -43,6 +43,9 @@ export default function CreateUser(){
     // Register form
     return(
         <div action="" onSubmit={postUser}>
+            
+            <button onClick={() => navigate("/")}>Return to Login</button>
+
             <form>
                 <label htmlFor="username">Username</label>
                 <input type="text" name="username" id="username" onChange={handleOnChange} value={formData.username} required />
