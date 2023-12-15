@@ -1,5 +1,6 @@
 import axios from "axios"
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 export default function CreateUser(){
     
@@ -10,6 +11,9 @@ export default function CreateUser(){
     })
     const [postResponse, setPostResponse] = useState("")
 
+    // navigation
+    const navigate = useNavigate()
+
     // Handlers
     const handleOnChange = (evt) => {
         const {name, value} = evt.target
@@ -19,6 +23,10 @@ export default function CreateUser(){
                 [name]:value
             }
         })
+    }
+
+    const handleRegistration = (message) => {
+        return message == "Successful Registration" ? navigate("/") : console.log("no")
     }
 
     // Post
@@ -42,7 +50,7 @@ export default function CreateUser(){
                 <label htmlFor="password">Password</label>
                 <input type="password" name="password" id="password" onChange={handleOnChange} value={formData.password} required />
 
-                <button>Submit</button>
+                <button onClick={() => handleRegistration(postResponse)}>Register</button>
             </form>
             {postResponse}
         </div>
